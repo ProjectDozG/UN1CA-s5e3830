@@ -373,6 +373,11 @@ fi
 
 # Fix object capture
 if [[ "$TARGET_OS_SINGLE_SYSTEM_IMAGE" == "essi" ]]; then
+    if [[ "$TARGET_PLATFORM" == "s5e3830" ]]; then
+        HEX_PATCH "$WORK_DIR/system/system/lib64/libobjectcapture_jni.arcsoft.so" \
+            "e503162a47020094e022009121008052e203162a" "0500805247020094e02200912100805202008052"
+    elif {
+
     if [[ "$TARGET_PLATFORM" == "exynos990" ]] && \
             cmp -s "$WORK_DIR/system/system/lib64/libobjectcapture_jni.arcsoft.so" \
                 "$SRC_DIR/platform/exynos990/patches/camera/system/lib64/libobjectcapture_jni.arcsoft.so"; then
